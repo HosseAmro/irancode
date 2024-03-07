@@ -1,8 +1,9 @@
+import { FaAngleLeft } from "react-icons/fa6";
+import { Vazirmatn } from "next/font/google";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const vazirmatn = Vazirmatn({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
   title: "Iran Code",
@@ -16,7 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={vazirmatn.className}>
+        <div className="flex w-full justify-center">
+          <div className="relative min-h-screen min-w-[200px] w-[500px]">
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
