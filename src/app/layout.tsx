@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={vazirmatn.className}>
         <div className="flex w-full justify-center">
-          <div className="relative min-h-screen min-w-[200px] w-[500px]">
+          <div className="relative min-h-screen w-[500px] max-[300px]:w-full">
             {children}
           </div>
         </div>

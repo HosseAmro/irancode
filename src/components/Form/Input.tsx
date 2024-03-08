@@ -2,12 +2,12 @@ import React from "react";
 
 export default function Input() {
   return (
-    <form className="flex flex-col px-3">
-      <label className="mb-3 text-gray-800" htmlFor="text">
+    <form className="px-3">
+      <label className="text-gray-800" htmlFor="text">
         کد ۱۳ رقمی
       </label>
       <input
-        className="bg-[#f7f7f7] focus:border-blue-400 focus:border-solid rounded-xl w-full h-[3rem] pr-2 mb-14"
+        className="bg-[rgb(247,247,247)] focus:border-blue-400 focus:border-solid rounded-xl w-full h-[3rem] pr-2 mb-14 mt-3 max-mb0:placeholder:text-transparent"
         placeholder="کد مورد نظر را وارد کنید."
         type="text"
         name="text"
