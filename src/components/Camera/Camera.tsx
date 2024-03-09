@@ -1,6 +1,7 @@
-import React from "react";
 import { TiFlashOutline } from "react-icons/ti";
 import { TbPhoto } from "react-icons/tb";
+import React from "react";
+
 export default function Camera() {
   return (
     <>

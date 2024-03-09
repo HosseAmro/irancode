@@ -1,10 +1,10 @@
-import { FaAngleLeft } from "react-icons/fa6";
+import GoBack from "@/components/Header/Header";
 import { Vazirmatn } from "next/font/google";
+import { Provider } from "@/context";
 import type { Metadata } from "next";
 import "./globals.css";
 
 const vazirmatn = Vazirmatn({ subsets: ["arabic"] });
-
 export const metadata: Metadata = {
   title: "Iran Code",
   description: "",
@@ -16,13 +16,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fa">
       <body className={vazirmatn.className}>
-        <div className="flex w-full justify-center">
-          <div className="relative min-h-screen w-[500px] max-[300px]:w-full">
-            {children}
+        <Provider>
+          <div className="flex w-full justify-center">
+            <div className="relative min-h-screen w-[500px] max-[300px]:w-full">
+              <GoBack />
+              {children}
+            </div>
           </div>
-        </div>
+        </Provider>
       </body>
     </html>
   );

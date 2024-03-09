@@ -1,6 +1,8 @@
-import React from "react";
-import { FaBarcode } from "react-icons/fa6";
 import { FaCalendarDay } from "react-icons/fa";
+import { FaBarcode } from "react-icons/fa6";
+import Link from "next/link";
+import React from "react";
+
 export default function CardProduct() {
   return (
     <div className="border-solid border-[#c7c7c7] border-2 rounded-md w-[90%] my-3 m-auto">
@@ -16,9 +18,11 @@ export default function CardProduct() {
           <FaCalendarDay />
           1402/11/10
         </div>
-        <div className="text-[#719ce0] bg-[#eff4fc] rounded-xl py-1 px-4 max-mb2:w-[22%] text-center">
-          جزئیات
-        </div>
+        <Link href="./details">
+          <div className="text-[#719ce0] bg-[#eff4fc] rounded-xl py-1 px-4 max-mb2:w-[22%] text-center">
+            جزئیات
+          </div>
+        </Link>
       </div>
     </div>
   );
