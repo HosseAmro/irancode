@@ -17,3 +17,11 @@
 html {
   scroll-behavior: smooth;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+input[type="number"] {
+  appearance: none;
+  -moz-appearance: textfield;
+}

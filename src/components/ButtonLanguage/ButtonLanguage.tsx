@@ -22,7 +22,7 @@ export default function ButtonLanguage() {
   function handelerenglish() {
     const test = overWrite({ value: { language: "english" } });
   }
-  console.log("0", state);
+  
   return (
     <div className="flex justify-around max-mb1:flex-col max-mb1:items-center">
       <button
