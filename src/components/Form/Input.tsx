@@ -2,10 +2,16 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaForm, SchemaFormType } from "@/zod";
+import { Barcode } from "@/api/apiBarcode";
 import { useForm } from "react-hook-form";
-import React from "react";
+import { useContext } from "@/context";
+import React, { useState } from "react";
 
 export default function Input() {
+  const [failAxios, setFailAxios] = useState(false);
+  const { state, overWrite } = useContext();
+  let border = "focus:border-blue-400";
+
   const {
     reset,
     register,
@@ -14,14 +20,28 @@ export default function Input() {
   } = useForm<SchemaFormType>({
     resolver: zodResolver(schemaForm),
   });
-  let border = "focus:border-blue-400";
   if (errors.barcode) {
     border = "focus:border-red-400";
   }
+  if (failAxios) {
+    errors.barcode = {
+      type: "value",
+      message: "عدد وارد شده معتبر نیست",
+    };
+  }
+
   async function onSubmit({ barcode }: SchemaFormType) {
-    await new Promise((res) => setTimeout(res, 1000));
-    console.log("🚀 ~ onSubmit ~ barcode:", barcode, typeof barcode);
-    reset();
+    const res = await Barcode(
+      "6260227723333",
+      state ,
+      overWrite
+    );
+    if (res) {
+      setFailAxios(false);
+      reset();
+    } else {
+      setFailAxios(true);
+    }
   }
 
   return (

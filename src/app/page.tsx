@@ -1,23 +1,42 @@
 "use client";
+
 import Camera from "@/components/Camera/Camera";
-import { useRouter } from "next/navigation";
 import Form from "@/components/Form/Form";
+import { useContext } from "@/context";
 import { Sing } from "@/api/apiSign";
+import NotFound from "./not-found";
+import { useEffect } from "react";
+import Loading from "./loading";
+
+const url = "";
 
 export default function Home() {
-  const router = useRouter();
-  Sing().then((boolean) => {
-    if (boolean) {
-      router.push("/");
-    } else {
-      // TODO Create NotFind
-      router.push("/notfind");
+  const { state, overWrite } = useContext();
+
+  useEffect(() => {
+    async function lod() {
+      const res = await Sing(url, overWrite);
     }
-  });
+    lod();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <main className="flex flex-col h-full w-full bg-[#37281d] text-white">
-      <Camera />
-      <Form />
-    </main>
+    <>
+      {state.session === null ? (
+        <Loading title="در حال ارسال درخواست..." />
+      ) : (
+        <>
+          {state.session !== "" ? (
+            <main className="flex flex-col h-full w-full bg-[#37281d] text-white">
+              <Camera />
+              <Form />
+            </main>
+          ) : (
+            <NotFound title="این صفحه مجاز نیست" />
+          )}
+        </>
+      )}
+    </>
   );
 }

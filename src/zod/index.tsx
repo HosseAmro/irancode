@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 export const schemaForm = z.object({
-  barcode: z.string().length(13, "کد 13 رقمی معتبر نیست."),
+  barcode: z.string().length(3, "کد 13 رقمی معتبر نیست."),
 });
 
 export type SchemaFormType = z.input<typeof schemaForm>;
@@ -18,7 +18,7 @@ export const schemaSign = z.object({
 
 export type schemaSignType = z.input<typeof schemaSign>;
 
-export const schemaProducts = z.object({
+export const schemaBarcode = z.object({
   resultCode: z.number(),
   resultMessage: z.string(),
   info: z.object({
@@ -29,4 +29,4 @@ export const schemaProducts = z.object({
   }),
 });
 
-export type schemaProductsType = z.input<typeof schemaProducts>;
+export type schemaBarcodeType = z.input<typeof schemaBarcode>;
