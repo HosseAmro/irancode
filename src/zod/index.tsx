@@ -25,7 +25,7 @@ export const schemaBarcode = z.object({
     GTINCode: z.string(),
     containsErrors: z.boolean(),
     errorMessage: z.string().or(z.null()),
-    resultData: z.array(z.object({}).catchall(z.string().or(z.null()))),
+    resultData: z.array(z.object({}).passthrough()),
   }),
 });
 

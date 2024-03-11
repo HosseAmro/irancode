@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaForm, SchemaFormType } from "@/zod";
 import { Barcode } from "@/api/apiBarcode";
 import { useForm } from "react-hook-form";
-import { useContext } from "@/context";
 import React, { useState } from "react";
+import { useContext } from "@/context";
 
 export default function Input() {
   const [failAxios, setFailAxios] = useState(false);

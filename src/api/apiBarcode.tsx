@@ -1,3 +1,4 @@
+import { SimilarStringRemover } from "@/utils/SimilarStringRemover";
 import { InitState, useContext } from "@/context";
 import { schemaBarcode } from "@/zod";
 import axios from "axios";
@@ -19,9 +20,18 @@ export async function Barcode(
     return false;
   }
 
+  const oldAllBarcode = [...state.allBarcode, dataSchema.data.info.GTINCode];
+  const newAllBarcode = SimilarStringRemover(oldAllBarcode);
   overWrite({
-    value: { allBarcode: [...state.allBarcode, dataSchema.data.info.GTINCode] },
+    value: { allBarcode: newAllBarcode },
   });
-  overWrite({ value: { lastBarcode: dataSchema.data } });
+  overWrite({ value: { lastBarcodeDetails: dataSchema.data } });
+  overWrite({
+    value: {
+      allBarcodeDetails: {
+        [dataSchema.data.info.GTINCode]: dataSchema.data,
+      },
+    },
+  });
   return true;
 }
