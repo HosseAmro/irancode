@@ -2,21 +2,30 @@
 
 import { useContext } from "@/context";
 import React from "react";
-
-export default function CardDetails() {
+type CardDetailsType = {
+  name: string;
+  value: string;
+  full?: boolean;
+};
+export default function CardDetails({ name, value, full }: CardDetailsType) {
   const { state } = useContext();
-  let name = "";
-  let value = "";
+
   let direction = "";
 
-  if (state.language === "farsi") {
-    name = "نام";
-    value = "مقدار";
-  } else {
-    name = "name";
-    value = "value";
+  if (state.language === "english") {
     direction = "text-end";
   }
+
+  if (full) {
+    return (
+      <div
+        className={`flex px-4 py-4 border-0 border-b-4 border-solid text-black border-white flex-col max-mb1:gap-6  ${direction}`}
+      >
+        {value}
+      </div>
+    );
+  }
+
   return (
     <div
       className={`flex px-4 py-4 border-0 border-b-4 border-solid border-white max-mb1:flex-col max-mb1:gap-6  ${direction}`}

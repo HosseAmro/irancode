@@ -2,17 +2,16 @@
 
 import CardProduct from "@/components/CardProduct/CardProduct";
 import { useContext } from "@/context";
-import { schemaBarcode } from "@/zod";
 import React from "react";
 
 export default function Products() {
   const { state } = useContext();
 
   const pro = state.allBarcode.map((barcode) => {
-    const details = state.allBarcodeDetails[barcode].info;
+    const allObj = state.allBarcodeDetails[barcode].info.resultData;
     const dateNow = new Date().toString();
     let title = "";
-    details.resultData.map((obj) => {
+    allObj.map((obj) => {
       if (Object.keys(obj)[0] === "FunctionalName") {
         title = Object.values(obj)[0] as string;
       }

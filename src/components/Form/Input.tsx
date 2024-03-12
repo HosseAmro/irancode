@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaForm, SchemaFormType } from "@/zod";
+import { useRouter } from "next/navigation";
 import { Barcode } from "@/api/apiBarcode";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
@@ -10,6 +11,7 @@ import { useContext } from "@/context";
 export default function Input() {
   const [failAxios, setFailAxios] = useState(false);
   const { state, overWrite } = useContext();
+  const router = useRouter();
   let border = "focus:border-blue-400";
 
   const {
@@ -31,14 +33,11 @@ export default function Input() {
   }
 
   async function onSubmit({ barcode }: SchemaFormType) {
-    const res = await Barcode(
-      "6260227723333",
-      state ,
-      overWrite
-    );
-    if (res) {
+    const res = await Barcode("6260227723333", state, overWrite);
+    if (res.ok) {
       setFailAxios(false);
       reset();
+      router.push(`/details?barcode=${res.barcode}`);
     } else {
       setFailAxios(true);
     }
