@@ -6,11 +6,11 @@ import axios from "axios";
 export async function Barcode(
   barcode: string,
   state: InitState,
-  overWrite: Function
+  overWrite: (payload: { value: any; scope?: string }) => any
 ) {
   const dataAxios = await axios.post(
     `http://185.213.167.156:1016/v1/service/irancode/GTIN/inquiry`,
-    { GTINCode: barcode },
+    { GTINCode: "6260227723333"  },
     { headers: { session: state.session } }
   );
 

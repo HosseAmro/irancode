@@ -1,3 +1,4 @@
+import SignUser from "@/components/SignUser/SignUser";
 import GoBack from "@/components/Header/Header";
 import { Vazirmatn } from "next/font/google";
 import { Provider } from "@/context";
@@ -22,7 +23,7 @@ export default function RootLayout({
           <div className="flex w-full justify-center">
             <div className="relative min-h-screen w-[500px] max-[300px]:w-full">
               <GoBack />
-              {children}
+              <SignUser>{children}</SignUser>
             </div>
           </div>
         </Provider>
