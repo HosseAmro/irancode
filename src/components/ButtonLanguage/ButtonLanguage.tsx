@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { useContext } from "@/context";
+import React from "react";
 
 export default function ButtonLanguage() {
   const { state, overWrite } = useContext();
 
   let farsi = "";
   let english = "";
+  
   if (state.language === "farsi") {
     farsi = " text-white bg-blue-700";
     english = " text-[#7a7a7a] bg-[#f2f2f2]";
@@ -22,7 +23,7 @@ export default function ButtonLanguage() {
   function handelerenglish() {
     const test = overWrite({ value: { language: "english" } });
   }
-  
+
   return (
     <div className="flex justify-around max-mb1:flex-col max-mb1:items-center">
       <button

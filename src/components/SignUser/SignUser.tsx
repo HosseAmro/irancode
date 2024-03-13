@@ -2,7 +2,7 @@
 
 import { useContext } from "@/context";
 import NotFound from "@/app/not-found";
-import { Sing } from "@/api/apiSign";
+import { apiSing } from "@/api/apiSign";
 import Loading from "@/app/loading";
 import { useEffect } from "react";
 import React from "react";
@@ -15,7 +15,7 @@ export default function SignUser({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     async function lod() {
-      const res = await Sing(url, state, overWrite);
+      const res = await apiSing(url, state, overWrite);
     }
     lod();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -2,7 +2,7 @@ import { InitState } from "@/context";
 import { schemaSign } from "@/zod";
 import axios from "axios";
 
-export async function Sing(
+export async function apiSing(
   sing: string,
   state: InitState,
   overWrite: (payload: { value: any; scope?: string }) => any

@@ -1,9 +1,9 @@
 "use client";
 
 import CardDetails from "../CardDetails/CardDetails";
+import { ZodTypeAny, objectInputType } from "zod";
 import { useContext } from "@/context";
 import React from "react";
-import { ZodTypeAny, objectInputType } from "zod";
 
 type CollectionDetailsType = {
   title: string;
@@ -14,6 +14,7 @@ type CollectionDetailsType = {
   full?: boolean;
   allObj: objectInputType<{}, ZodTypeAny, "passthrough">[];
 };
+
 export default function CollectionDetails({
   title,
   details,
@@ -26,8 +27,10 @@ export default function CollectionDetails({
   if (state.language === "english") {
     titleClass = "text-end";
   }
+
   const AllCardDetails = details.dbName.map((str, i) => {
     let value = "";
+    
     allObj.forEach((obj) => {
       if (Object.keys(obj)[0] === str) {
         value = Object.values(obj)[0] as string;

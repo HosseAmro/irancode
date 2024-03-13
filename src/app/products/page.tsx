@@ -7,10 +7,11 @@ import React from "react";
 export default function Products() {
   const { state } = useContext();
 
-  const pro = state.allBarcode.map((barcode) => {
+  const allCard = state.allBarcode.map((barcode) => {
     const allObj = state.allBarcodeDetails[barcode].info.resultData;
     const dateNow = new Date().toString();
     let title = "";
+    
     allObj.map((obj) => {
       if (Object.keys(obj)[0] === "FunctionalName") {
         title = Object.values(obj)[0] as string;
@@ -28,5 +29,5 @@ export default function Products() {
     );
   });
 
-  return <div className="mt-16">{pro}</div>;
+  return <div className="mt-16">{allCard}</div>;
 }

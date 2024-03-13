@@ -4,7 +4,6 @@ import { convertToShamsi } from "@/utils/ConvertToShamsi";
 import { FaCalendarDay } from "react-icons/fa";
 import { FaBarcode } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import React from "react";
 
 type CardProductProps = {
@@ -21,7 +20,6 @@ export default function CardProduct({
   const router = useRouter();
   const newDate = convertToShamsi(date);
   function handeler() {
-    console.log(barcode);
     router.push(`/details?barcode=${barcode}`);
   }
 

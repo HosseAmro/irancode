@@ -7,7 +7,7 @@ import React from "react";
 export default function Header() {
   const router = useRouter();
   const path = usePathname();
-  let classGoBack = "hidden";
+  let classGoBack = "";
   let title = "";
 
   function handeler() {

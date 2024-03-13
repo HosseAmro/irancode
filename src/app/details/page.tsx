@@ -3,18 +3,19 @@
 import CollectionDetails from "@/components/CollectionDetails/CollectionDetails";
 import ButtonLanguage from "@/components/ButtonLanguage/ButtonLanguage";
 import { useSearchParams } from "next/navigation";
+import { ZodTypeAny, objectInputType } from "zod";
 import { useContext } from "@/context";
 import NotFound from "../not-found";
 import React from "react";
-import { ZodTypeAny, objectInputType } from "zod";
 
 export default function Details() {
-  const { state, overWrite } = useContext();
+  const { state } = useContext();
   const pathname = useSearchParams();
   const barcode = pathname.get("barcode");
 
   let allObj: objectInputType<{}, ZodTypeAny, "passthrough">[] | undefined =
     undefined;
+
   if (typeof barcode === "string") {
     allObj = state.allBarcodeDetails[barcode]?.info.resultData;
   }

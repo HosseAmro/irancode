@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaForm, SchemaFormType } from "@/zod";
 import { useRouter } from "next/navigation";
-import { Barcode } from "@/api/apiBarcode";
+import { apiBarcode } from "@/api/apiBarcode";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import { useContext } from "@/context";
@@ -33,7 +33,7 @@ export default function Input() {
   }
 
   async function onSubmit({ barcode }: SchemaFormType) {
-    const res = await Barcode("6260227723333", state, overWrite);
+    const res = await apiBarcode(barcode, state, overWrite);
     if (res.ok) {
       setFailAxios(false);
       reset();
@@ -45,7 +45,7 @@ export default function Input() {
 
   return (
     <form className="px-3" onSubmit={handleSubmit(onSubmit)}>
-      <label className="text-gray-800" htmlFor="text">
+      <label className="text-gray-800" htmlFor="barcode">
         کد ۱۳ رقمی
       </label>
       <div className="mb-14 mt-3">
@@ -61,7 +61,7 @@ export default function Input() {
         )}
       </div>
       <button
-        className="text-white bg-blue-900 text-xl h-[3rem] w-full m-auto rounded-lg mb-1 disabled:bg-black"
+        className="text-white bg-blue-900 text-xl h-[3rem] w-full m-auto rounded-lg mb-1 disabled:bg-gray-600 "
         type="submit"
         disabled={isSubmitting}
       >

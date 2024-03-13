@@ -2,14 +2,15 @@
 
 import { useContext } from "@/context";
 import React from "react";
+
 type CardDetailsType = {
   name: string;
   value: string;
   full?: boolean;
 };
+
 export default function CardDetails({ name, value, full }: CardDetailsType) {
   const { state } = useContext();
-
   let direction = "";
 
   if (state.language === "english") {
