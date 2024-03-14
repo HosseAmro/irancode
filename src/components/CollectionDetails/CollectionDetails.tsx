@@ -36,6 +36,9 @@ export default function CollectionDetails({
         value = Object.values(obj)[0] as string;
       }
     });
+    if (value === null) {
+      value = "-"
+    }
     return (
       <>
         <CardDetails

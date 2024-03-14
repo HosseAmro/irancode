@@ -11,7 +11,7 @@ const url =
   "LeJwXSdEqUHbrSwxS9FmDOd71BDtc9gEIAfHLKMQtBypQGmgmxTwtpxqel+mDkPupTL9Yx6QtUVQB8R3ivvJne8fgxO/3O6yEzUOQYECTFY";
 
 export default function SignUser({ children }: { children: React.ReactNode }) {
-  const { state, overWrite } = useContext();
+  const { state, overWrite } = useContext();console.log(state)
 
   useEffect(() => {
     async function lod() {

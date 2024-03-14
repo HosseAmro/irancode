@@ -10,6 +10,7 @@ import React from "react";
 
 export default function Details() {
   const { state } = useContext();
+  
   const pathname = useSearchParams();
   const barcode = pathname.get("barcode");
 
@@ -30,11 +31,11 @@ export default function Details() {
                 title="محصول"
                 details={{
                   dbName: [
+                    "ProductName",
                     "FunctionalName",
-                    "FunctionalName",
-                    "type",
+                    "VariantText",
                     "brand",
-                    "National Code",
+                    "NationalCode",
                   ],
                   showName: ["نام", "نام عملیاتی", "نوع", "برند", "کد کالا"],
                 }}
@@ -72,7 +73,7 @@ export default function Details() {
               <CollectionDetails
                 title="محتوای خالص"
                 details={{
-                  dbName: ["NetContent", "NetWeight"],
+                  dbName: ["ContentUnit", "NetContent"],
                   showName: ["واحد", "محتوای خالص"],
                 }}
                 allObj={allObj}
@@ -92,11 +93,11 @@ export default function Details() {
                     "ManufacturerCountryName",
                     "madein",
                     "LanguageName",
-                    "",
+                    "GPC",
                     "IranCode",
                     "distributor",
                     "producer",
-                    "",
+                    "IsLegal",
                     "JuridicalID",
                   ],
                   showName: [
@@ -126,9 +127,9 @@ export default function Details() {
                 title="Products"
                 details={{
                   dbName: [
+                    "ProductNameEn",
                     "FunctionalNameEn",
-                    "FunctionalNameEn",
-                    "ContentUnit",
+                    "VariantTextEn",
                     "BrandEn",
                   ],
                   showName: ["Name", "Functional Name", "Unite", "Brand"],
