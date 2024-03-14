@@ -13,8 +13,6 @@ export async function apiBarcode(
     { GTINCode: barcode },
     { headers: { session: state.session } }
   );
-  console.log("🚀 ~ dataAxios:", dataAxios);
-
   const dataSchema = schemaBarcode.safeParse(dataAxios.data);
 
   if (!dataSchema.success) {
@@ -34,6 +32,5 @@ export async function apiBarcode(
       },
     },
   });
-  console.log(state);
   return { ok: true, barcode: barcode };
 }
