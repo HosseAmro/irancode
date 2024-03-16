@@ -12,6 +12,9 @@ const config: Config = {
       mb1: "250px",
       mb2: "490px",
     },
+    fontFamily: {
+      iranyekan: ["iranyekan"],
+    },
   },
   plugins: [],
 };

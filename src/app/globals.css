@@ -16,6 +16,7 @@
 }
 html {
   scroll-behavior: smooth;
+  font-size: 14px;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -25,3 +26,11 @@ input[type="number"] {
   appearance: none;
   -moz-appearance: textfield;
 }
+
+@font-face {
+  font-family: "iranyekan";
+  src: url(/font/iranyekan/iranyekan-fa-400.ttf) format("truetype");
+}
+/* body {
+  font-family: iranyekan;
+} */

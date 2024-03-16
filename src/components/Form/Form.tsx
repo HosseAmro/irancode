@@ -5,8 +5,8 @@ import React from "react";
 
 export default function Form() {
   return (
-    <div className="bg-white text-black rounded-t-[2rem]">
-      <div className="flex justify-between p-6 max-[220px]:flex-col max-[220px]:items-center">
+    <div className="basis-[30%] bg-white text-black rounded-t-[2rem] flex flex-col justify-between gap-8">
+      <div className="flex justify-between p-6 max-[220px]:flex-col max-[220px]:items-center mt-6">
         <div className="text-blue-700 font-bold text-xl max-[220px]:pb-3">
           استعلام ایران کد
         </div>
