@@ -11,10 +11,10 @@ type CardDetailsType = {
 
 export default function CardDetails({ name, value, full }: CardDetailsType) {
   const { state } = useContext();
-  let direction = "";
+  let direction = "max-mb1:flex-col";
 
   if (state.language === "english") {
-    direction = "text-end";
+    direction = "text-end max-mb1:flex-col-reverse";
   }
 
   if (full) {
@@ -29,7 +29,7 @@ export default function CardDetails({ name, value, full }: CardDetailsType) {
 
   return (
     <div
-      className={`flex px-4 py-4 border-0 border-b-4 border-solid border-white max-mb1:flex-col max-mb1:gap-6  ${direction}`}
+      className={`flex px-4 py-4 border-0 border-b-4 border-solid border-white max-mb1:gap-6 ${direction}`}
     >
       {state.language === "farsi" ? (
         <>
