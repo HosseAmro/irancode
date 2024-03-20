@@ -3,13 +3,13 @@
 import { useContext } from "@/context";
 import React from "react";
 
-type CardDetailsType = {
+type CardDetailsProps = {
   name: string;
   value: string;
   full?: boolean;
 };
 
-export default function CardDetails({ name, value, full }: CardDetailsType) {
+export default function CardDetails({ name, value, full }: CardDetailsProps) {
   const { state } = useContext();
   let direction = "max-mb1:flex-col";
 

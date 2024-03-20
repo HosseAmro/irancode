@@ -5,7 +5,7 @@ import { ZodTypeAny, objectInputType } from "zod";
 import { useContext } from "@/context";
 import React from "react";
 
-type CollectionDetailsType = {
+type CollectionDetailsProps = {
   title: string;
   details: {
     dbName: string[];
@@ -20,7 +20,7 @@ export default function CollectionDetails({
   details,
   allObj,
   full,
-}: CollectionDetailsType) {
+}: CollectionDetailsProps) {
   const { state } = useContext();
   let titleClass = "";
 

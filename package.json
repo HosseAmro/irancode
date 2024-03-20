@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ericblade/quagga2": "^1.8.4",
     "@hookform/resolvers": "^3.3.4",
     "axios": "^1.6.7",
     "jalaali-js": "^1.2.6",
