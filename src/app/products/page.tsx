@@ -11,7 +11,7 @@ export default function Products() {
     const allObj = state.allBarcodeDetails[barcode].info.resultData;
     const dateNow = new Date().toString();
     let title = "";
-    
+
     allObj.map((obj) => {
       if (Object.keys(obj)[0] === "FunctionalName") {
         title = Object.values(obj)[0] as string;

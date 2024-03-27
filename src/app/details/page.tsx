@@ -10,7 +10,7 @@ import React from "react";
 
 export default function Details() {
   const { state } = useContext();
-  
+
   const pathname = useSearchParams();
   const barcode = pathname.get("barcode");
 

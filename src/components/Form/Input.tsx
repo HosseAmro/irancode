@@ -2,8 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaForm, SchemaFormType } from "@/zod";
-import { useRouter } from "next/navigation";
 import { apiBarcode } from "@/api/apiBarcode";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import { useContext } from "@/context";

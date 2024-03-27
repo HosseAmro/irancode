@@ -8,7 +8,7 @@ export default function ButtonLanguage() {
 
   let farsi = "";
   let english = "";
-  
+
   if (state.language === "farsi") {
     farsi = " text-white bg-blue-700";
     english = " text-[#7a7a7a] bg-[#f2f2f2]";

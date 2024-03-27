@@ -3,6 +3,8 @@
 import { SimilarObjectsRemover } from "@/utils/SimilarObjectsRemover";
 import { SimilarStringRemover } from "@/utils/SimilarStringRemover";
 import React, { useEffect, useRef } from "react";
+import { apiBarcode } from "@/api/apiBarcode";
+import { useRouter } from "next/navigation";
 import Scanner from "../Scanner/Scanner";
 import Quagga from "@ericblade/quagga2";
 import { useContext } from "@/context";
@@ -10,16 +12,19 @@ import { useContext } from "@/context";
 export default function Barcode() {
   const scannerRef = useRef<HTMLDivElement>(null);
   const { state, overWrite } = useContext();
+  const router = useRouter();
 
-  function addResult(result: string) {
+  async function addResult(result: string) {
     const oldAllBarcode = [...state.camera.results, result];
     const newAllBarcode = SimilarStringRemover(oldAllBarcode);
     overWrite({
       value: { results: newAllBarcode },
       scope: "camera",
     });
-    console.log(state);
-    console.log(newAllBarcode);
+    const res = await apiBarcode(result, state, overWrite);
+    if (res.ok) {
+      router.push(`/details?barcode=${res.barcode}`);
+    }
   }
 
   function setCameras(cameras: MediaDeviceInfo[]) {
@@ -43,19 +48,6 @@ export default function Barcode() {
     });
   }
 
-  function onTorchClick() {
-    const torch = !state.camera.torchOn;
-    overWrite({
-      value: { torchOn: torch },
-      scope: "camera",
-    });
-    if (torch) {
-      Quagga.CameraAccess.enableTorch();
-    } else {
-      Quagga.CameraAccess.disableTorch();
-    }
-  }
-
   useEffect(() => {
     const enableCamera = async () => {
       await Quagga.CameraAccess.request(null, {});
@@ -65,7 +57,6 @@ export default function Barcode() {
     };
     const enumerateCameras = async () => {
       const cameras = await Quagga.CameraAccess.enumerateVideoDevices();
-      console.log("Cameras Detected: ", cameras);
       return cameras;
     };
 
